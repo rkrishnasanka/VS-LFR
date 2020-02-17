@@ -1,0 +1,1 @@
+This is a syntax highlighting plugin for LFR files

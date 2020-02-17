@@ -1,0 +1,26 @@
+{
+    "name": "lfr",
+    "displayName": "lfr",
+    "description": "Liquid Flow Relations",
+    "version": "0.0.4",
+    "publisher": "rkrishnasanka",
+    "engines": {
+        "vscode": "^1.33.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [{
+            "id": "lfr",
+            "aliases": ["Liquid Flow Relations", "lfr"],
+            "extensions": ["lfr"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "lfr",
+            "scopeName": "source.lfr",
+            "path": "./syntaxes/lfr.tmLanguage.json"
+        }]
+    }
+}

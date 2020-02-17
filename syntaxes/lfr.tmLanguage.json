@@ -1,0 +1,60 @@
+{
+    "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+    "name": "Liquid Flow Relations",
+    "patterns": [{
+            "include": "#keywords"
+        },
+        {
+            "include": "#strings"
+        },
+        {
+            "include": "#directives"
+        },
+        {
+            "include": "#literals"
+        },
+        {
+            "include": "#comments"
+        }
+    ],
+    "repository": {
+        "keywords": {
+            "patterns": [{
+                "name": "keyword.control.lfr",
+                "match": "\\b(module|endmodule|finput|foutput|control|storage|reactor|control|assign|distribute|begin|end|case|endcase|flow|fluid|)\\b"
+            }]
+        },
+        "strings": {
+            "name": "string.quoted.double.lfr",
+            "begin": "\"",
+            "end": "\"",
+            "patterns": [{
+                "name": "constant.character.escape.lfr",
+                "match": "\\\\."
+            }]
+        },
+        "directives": {
+            "name": "directives.lfr",
+            "patterns": [{
+                "name": "meta.preprocessor.lfr",
+                "match": "#(.)*$"
+            }]
+
+        },
+        "literals": {
+            "name": "constant.numeric.lfr",
+            "patterns": [{
+                "name": "constant.numeric",
+                "match": ""
+            }]
+        },
+        "comments": {
+            "name": "comment.lfr",
+            "patterns": [{
+                "name": "comment",
+                "match": "[/]+.*"
+            }]
+        }
+    },
+    "scopeName": "source.lfr"
+}
