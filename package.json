@@ -2,7 +2,7 @@
     "name": "lfr",
     "displayName": "lfr",
     "description": "Liquid Flow Relations",
-    "version": "0.0.4",
+    "version": "0.0.5",
     "publisher": "rkrishnasanka",
     "engines": {
         "vscode": "^1.33.0"
