@@ -21,7 +21,7 @@
         "keywords": {
             "patterns": [{
                 "name": "keyword.control.lfr",
-                "match": "\\b(module|endmodule|finput|foutput|control|storage|reactor|control|assign|distribute|begin|end|case|endcase|flow|fluid|)\\b"
+                "match": "\\b(module|endmodule|finput|foutput|control|storage|reactor|control|assign|distribute|begin|end|case|endcase|flow|fluid|if|else|)\\b"
             }]
         },
         "strings": {
