@@ -1,7 +1,8 @@
 {
     "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
     "name": "Liquid Flow Relations",
-    "patterns": [{
+    "patterns": [
+        {
             "include": "#keywords"
         },
         {
@@ -15,45 +16,116 @@
         },
         {
             "include": "#comments"
+        },
+        {
+            "include": "#operators"
+        },
+        {
+            "include": "#constants"
         }
     ],
     "repository": {
         "keywords": {
-            "patterns": [{
-                "name": "keyword.control.lfr",
-                "match": "\\b(module|endmodule|finput|foutput|control|storage|reactor|control|assign|distribute|begin|end|case|endcase|flow|fluid|if|else|)\\b"
-            }]
+            "patterns": [
+                {
+                    "name": "keyword.control.lfr",
+                    "match": "\\b(module|endmodule|finput|foutput|control|storage|pump|control|assign|distribute|begin|end|case|endcase|flow|fluid|always|if|else|)\\b"
+                }
+            ]
+        },
+        "constants": {
+            "patterns": [
+                {
+                    "match": "[0-9]*'[bBoOdDhH][a-fA-F0-9_xXzZ]+\\b",
+                    "name": "constant.numeric.sized_integer"
+                },
+                {
+                    "captures": {
+                        "1": {
+                            "name": "constant.numeric.integer"
+                        },
+                        "2": {
+                            "name": "punctuation.separator.range"
+                        },
+                        "3": {
+                            "name": "constant.numeric.integer"
+                        }
+                    },
+                    "match": "\\b(\\d+)(:)(\\d+)\\b",
+                    "name": "meta.block.numeric.range"
+                },
+                {
+                    "match": "\\b\\d[\\d_]*(?i:e\\d+)?\\b",
+                    "name": "constant.numeric.integer"
+                },
+                {
+                    "match": "\\b\\d+\\.\\d+(?i:e\\d+)?\\b",
+                    "name": "constant.numeric.real"
+                },
+                {
+                    "match": "#\\d+",
+                    "name": "constant.numeric.delay"
+                },
+                {
+                    "match": "\\b[01xXzZ]+\\b",
+                    "name": "constant.numeric.logic"
+                }
+            ]
         },
         "strings": {
-            "name": "string.quoted.double.lfr",
-            "begin": "\"",
-            "end": "\"",
-            "patterns": [{
-                "name": "constant.character.escape.lfr",
-                "match": "\\\\."
-            }]
+            "patterns": [
+                {
+                    "begin": "\"",
+                    "end": "\"",
+                    "name": "string.quoted.double",
+                    "patterns": [
+                        {
+                            "match": "\\\\.",
+                            "name": "constant.character.escape"
+                        }
+                    ]
+                }
+            ]
         },
         "directives": {
             "name": "directives.lfr",
-            "patterns": [{
-                "name": "meta.preprocessor.lfr",
-                "match": "#(.)*$"
-            }]
-
+            "patterns": [
+                {
+                    "name": "meta.preprocessor.lfr",
+                    "match": "#(.)*$"
+                }
+            ]
         },
         "literals": {
             "name": "constant.numeric.lfr",
-            "patterns": [{
-                "name": "constant.numeric",
-                "match": ""
-            }]
+            "patterns": [
+                {
+                    "name": "constant.numeric",
+                    "match": ""
+                }
+            ]
         },
         "comments": {
             "name": "comment.lfr",
-            "patterns": [{
-                "name": "comment",
-                "match": "[/]+.*"
-            }]
+            "patterns": [
+                {
+                    "begin": "/\\*",
+                    "end": "\\*/",
+                    "name": "comment.block"
+                },
+                {
+                    "name": "comment",
+                    "match": "//+.*"
+                }
+            ]
+        },
+        "operators": {
+            "patterns": [
+                {
+                    "match": "\\+|-|\\*|/|%|(<|>)=?|(!|=)?==?|!|&&?|\\|\\|?|\\^?~|~\\^?",
+                    "name": "keyword.operator"
+                }
+            ]
         }
     },
     "scopeName": "source.lfr"
